@@ -1,0 +1,39 @@
+import { toValue } from 'vue';
+import { defu } from '../../utils/helpers';
+import type { IViewStateSourceResult } from '../useViewState';
+import { useRoute, useRouter } from '#app';
+import { computed, ref, watch } from '#imports';
+//
+export function useViewStateRouteMeta(): IViewStateSourceResult {
+ //
+ const route = useRoute();
+ const router = useRouter();
+ //
+ const model = computed({
+  // getter 関数
+  get() {
+   return route.meta;
+  },
+  // setter 関数
+  set(newValue) {
+   const hash = newValue ? `#${newValue}` : '';
+   const to = defu({ hash }, { query: route.query });
+   router.replace(to);
+  },
+ });
+ //
+ watch([route], (_) => {
+  const meta = toValue(props.meta);
+  if (meta && typeof meta === 'object') {
+   Object.entries(meta).forEach(([key, value]) => {
+    route.meta[key] = toValue(value);
+   });
+  }
+ }, { immediate: true });
+ //
+ return {
+  model,
+  updated: ref(false),
+  status: ref(200),
+ };
+}

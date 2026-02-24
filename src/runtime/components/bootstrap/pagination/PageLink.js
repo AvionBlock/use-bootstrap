@@ -1,0 +1,31 @@
+import { useInline } from "../../../composables/base/useInline.js";
+import { InlineProps } from "../../../composables/base/useBaseProps.js";
+import { usePageLink } from "../../../composables/bootstrap/usePagination.js";
+import { hProps } from "../../../composables/utils/useProps.js";
+import {
+  AnchorProps,
+  useAnchor
+} from "../../../composables/html/useAnchor.js";
+import Anchor from "../../html-inline/Anchor.js";
+import { defineComponent, h } from "#imports";
+export default defineComponent({
+  name: "PageLink",
+  props: {
+    ...InlineProps,
+    ...AnchorProps
+  },
+  setup(props, context) {
+    const inline = useInline(props);
+    const anchor = useAnchor(props);
+    const pageLink = usePageLink(props);
+    return () => h(
+      Anchor,
+      hProps(
+        pageLink,
+        anchor,
+        inline
+      ),
+      context.slots
+    );
+  }
+});

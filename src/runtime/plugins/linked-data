@@ -1,0 +1,32 @@
+import { defineNuxtPlugin, useRoute } from '#app'; // useRuntimeConfig
+import { useSiteConfig, useHead } from '#imports'; // defineOgImageComponent
+// html に追加されない
+
+export default defineNuxtPlugin((nuxtApp) => {
+ nuxtApp.hook('page:loading:end', () => {
+  const { url: siteUrl, name: siteName } = useSiteConfig();
+  const route = useRoute();
+  const likedData = route.meta.linkedData as Array<object>;
+  console.log('likedData', likedData);
+  const website = {
+   '@context': 'https://schema.org',
+   '@type': 'WebSite',
+   ...(siteUrl && { url: siteUrl }),
+   ...(siteName && { name: siteName }),
+  };
+
+  const jsonLd = [
+   website,
+   ...(likedData || []),
+  ];
+
+  useHead({
+   script: [
+    {
+     type: 'application/ld+json',
+     innerHTML: JSON.stringify(jsonLd),
+    },
+   ],
+  });
+ });
+});

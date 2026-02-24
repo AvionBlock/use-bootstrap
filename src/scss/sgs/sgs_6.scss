@@ -1,0 +1,19 @@
+@if $enable-sgs {
+ $spacer: 12px; ///
+ $spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 6,
+  7: $spacer * 9,
+  8: $spacer * 12,
+  9: $spacer * 24,
+  10: $spacer * 48   
+ );
+ $grid-gutter-width: 2px; ///
+ $container-padding-x: $spacer;
+}
+

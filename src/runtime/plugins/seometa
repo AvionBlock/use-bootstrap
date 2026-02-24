@@ -1,0 +1,39 @@
+import { joinURL } from 'ufo';
+import { useDynamicRouteParam } from '../composables/extend/dynamicRoute/useDynamicRouteParam';
+// import type { ModuleOptions } from '../../useOptions';
+import { defineNuxtPlugin, useRoute } from '#app'; // useRuntimeConfig
+import { useSeoMeta, useSiteConfig } from '#imports'; // defineOgImageComponent
+//
+
+export default defineNuxtPlugin((nuxtApp) => {
+ nuxtApp.hook('page:loading:start', () => {
+  // defineOgImageComponent('NuxtSeo');
+  const siteConfig = useSiteConfig();
+  const siteUrl = siteConfig?.url;
+  const siteName = siteConfig?.name;
+  const createImage = () => {
+   if (siteUrl) {
+    if (siteConfig?.image) {
+     return joinURL(siteUrl, siteConfig?.image);
+    }
+   }
+   return undefined;
+  };
+  const lang = useDynamicRouteParam('lang');
+  const route = useRoute();
+  useSeoMeta({
+   title: () => (route.meta[`title:${lang.value}`] || route.meta.title) as string,
+   description: () => (route.meta[`description:${lang.value}`] || route.meta.description) as string,
+   ogTitle: () => (route.meta[`title:${lang.value}`] || route.meta.title) as string,
+   ogDescription: () => (route.meta[`description:${lang.value}`] || route.meta.description) as string,
+   ogSiteName: siteName,
+   ogUrl: siteUrl,
+   ogLocale: lang.value,
+   ogImage: createImage(),
+   twitterDescription: () => (route.meta[`description:${lang.value}`] || route.meta.description) as string,
+   twitterCard: () => createImage() ? 'summary_large_image' : undefined,
+   twitterTitle: () => (route.meta[`title:${lang.value}`] || route.meta.title) as string,
+   twitterImage: createImage(),
+  });
+ });
+});

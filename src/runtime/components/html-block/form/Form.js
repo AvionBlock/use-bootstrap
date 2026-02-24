@@ -1,0 +1,25 @@
+import { hProps } from "../../../composables/utils/useProps.js";
+import { useBlock } from "../../../composables/base/useBlock.js";
+import { BlockProps } from "../../../composables/base/useBaseProps.js";
+import { useValidate, ValidateProps } from "../../../composables/bootstrap/useValidate.js";
+import { defineComponent, h, ref } from "#imports";
+export default defineComponent({
+  name: "Form",
+  props: {
+    ...BlockProps,
+    ...ValidateProps,
+    tag: {
+      type: String,
+      default: "form"
+    }
+  },
+  setup(props, context) {
+    const elementRef = ref();
+    const block = useBlock(props);
+    const validate = useValidate(props, elementRef);
+    const current = {
+      ref: elementRef
+    };
+    return () => h(props.tag, hProps(current, block, validate), context.slots);
+  }
+});

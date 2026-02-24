@@ -1,0 +1,34 @@
+import { useBlock } from "../../composables/base/useBlock.js";
+import { BlockProps } from "../../composables/base/useBaseProps.js";
+import { hProps, addProp } from "../../composables/utils/useProps.js";
+import { defineComponent, h, computed } from "#imports";
+export default defineComponent({
+  name: "TableHead",
+  props: {
+    ...BlockProps,
+    tag: {
+      type: String,
+      default: "thead"
+    },
+    color: {
+      type: String
+    }
+  },
+  setup(props, context) {
+    const block = useBlock(props);
+    const current = {
+      class: computed(() => {
+        return {
+          [`table-${props.color}`]: props.color
+        };
+      }),
+      style: computed(() => {
+        return {
+          ...addProp(props.backgroundColor, "--bs-table-bg", `var(--bs-${props.backgroundColor})`),
+          ...addProp(props.backgroundColor, "--bs-table-color", `var(--bs-contrast-${props.backgroundColor})`)
+        };
+      })
+    };
+    return () => h(props.tag, hProps(block, current), context.slots);
+  }
+});
