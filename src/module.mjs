@@ -1904,7 +1904,7 @@ const module = defineNuxtModule({
 
     if (options.scss) {
       nuxt.options.css ||= [];
-      nuxt.options.css.unshift(resolver.resolve("scss/usebootstrap.scss"));
+      nuxt.options.css.unshift("@avion-block/usebootstrap/scss/usebootstrap");
     }
 
     // site config
