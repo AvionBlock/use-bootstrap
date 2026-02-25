@@ -1,123 +1,102 @@
-# Welcome to use-bootstrap! 👋😁
+# use-bootstrap (fork of simplise/use-bootstrap)
 
-![main1](https://usebootstrap.org/img/logo/main1.svg)
+Nuxt 3 module for integrating Bootstrap 5 components and utilities
+into Vue-based applications with extended composables and UI helpers.
 
-## Documentation :green_book:
+---
 
-We recommend browsing the official site [here](https://usebootstrap.org/). The official site provides actual working [documentation](https://usebootstrap.org/lang-en) and [examples](https://usebootstrap.org/examples).
+## Documentation
 
-> ja:こちらの公式サイトを閲覧する事をオススメします。公式サイトでは実際に動作するドキュメントや実装例を掲載しています。(日本語対応してます ✨)
+For usage examples and integration details, please refer to:
 
-## Installation 🔧
+https://usebootstrap.org/
 
-Installation of Bootstrap5 and use-bootstrap NPM Package
+---
 
-```
+## Installation
+
+Install the module via Nuxt CLI:
+
+^^^bash
 npx nuxi@latest module add usebootstrap
-```
+^^^
 
-Add a usebootstrap section in your nuxt.config.
+Then enable the module in your `nuxt.config`:
 
-```
+^^^ts
 export default defineNuxtConfig({
-  modules: [
-    'usebootstrap'
-    ],
+modules: [
+'usebootstrap'
+]
 })
-```
+^^^
 
-## Concept 🎤
+---
 
-use-bootstrap is the front-end framework based on Nuxt3 and Bootstrap5.
+## Features
 
-- _Extended Bootstrap5 SCSS_
-- _Pure Vue.js Scripts_
-- _Support for UnoCSS, nuxt-link, nuxt-image, nuxt-icon, and more..._
-- _Seamless Integration of UI and Data_
-- _Unified Color Management_
-- _Static_Fragment_Generator_
+- Extended Bootstrap 5 SCSS support
+- Vue-based composables
+- Integration with:
+  - UnoCSS
+  - nuxt-link
+  - nuxt-image
+  - nuxt-icon
+- Unified color management
+- Static Fragment Generator
 
-## Components
+---
 
-- Accordion
-- Alerts
-- Badge
-- Breadcrumb
-- Buttons
-- Button group
-- Card
-- Carousel
-- Close button
-- Collapse
-- Dropdown
-- List group
-- Modal
-- Navbar
-- Navs and Tabs
-- Offcanvas
-- Pagination
-- Placeholders
-- Popovers
-- Progress
-- Scrollspy
-- Spinners
-- Toasts
-- Tooltips
-- Range
+## Included Components
 
-## Modules
+Accordion · Alerts · Badge · Breadcrumb · Buttons · Card · Carousel ·  
+Collapse · Dropdown · List Group · Modal · Navbar · Offcanvas ·  
+Pagination · Progress · Scrollspy · Spinners · Toasts · Tooltips · Range
 
-- VueUse
-- Icons
-- Fonts
-- Animate.css
-- Sitemap
-- Robots
-- UnoCSS
-- Leaflet Map
-- Markdown
+---
 
-## Extend Components
+## Optional Modules
 
-- Grid template
-- Color mode
+VueUse · Icons · Fonts · Animate.css · Sitemap · Robots · UnoCSS ·  
+Leaflet Map · Markdown
+
+---
+
+## Additional Extensions
+
+- Grid Templates
 - Localization
 - Sidebar
-- Table of Contents (Toc)
-- Code highlighter
-- Intro
-- Typed
+- Table of Contents
+- Code Highlighter
+- Typed Text
 - Swiper
 - Divider
 - Status Indicator
-- Icon Box
 - Avatar
-- Intersection Animate
-- Back to top
-- Responsive Divider
-- Json View
-- Password Strength
+- Intersection Animations
+- JSON Viewer
+- Password Strength Meter
 - Tiptap Editor
 - Sortable
 
-## Integration Components
+---
 
-- ViewState
-- ActionState
+## Attribution
 
-**For a detailed description click [here](https://usebootstrap.org/lang-en/getting-started/concept/).**
+This project is derived in part from:
 
-## License :page_facing_up:
+https://github.com/simplise/use-bootstrap
 
-Code released under the **MIT License**.
+The original project indicates MIT licensing in its
+README and website documentation but does not include
+a LICENSE file in the repository.
 
-## Member 👾
+This distribution reuses and adapts portions of that
+work in good faith based on that representation.
 
-- [✨KoujiSano✨](https://github.com/KoujiSano)
-- [ITpassport](https://github.com/ITpassport)
-- [Siguretuki](https://github.com/Siguretuki)
-- [yukikimoto](https://github.com/yukikimoto)
-- [Iris-Fla](https://github.com/Iris-Fla)
+---
 
+## License
 
-
+MIT License © 2026 Simplise / AvionBlock
