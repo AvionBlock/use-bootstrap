@@ -17,19 +17,17 @@ https://usebootstrap.org/
 
 Install the module via Nuxt CLI:
 
-^^^bash
+```bash
 npx nuxi@latest module add usebootstrap
-^^^
+```
 
 Then enable the module in your `nuxt.config`:
 
-^^^ts
+```ts
 export default defineNuxtConfig({
-modules: [
-'usebootstrap'
-]
-})
-^^^
+  modules: ["usebootstrap"],
+});
+```
 
 ---
 

@@ -1,9 +1,9 @@
 {
-  "name": "@avion/usebootstrap",
+  "name": "@avion-block/usebootstrap",
   "publishConfig": {
     "access": "public"
   },
-  "version": "4.0.1",
+  "version": "4.0.0",
   "description": "Bootstrap Nuxt module",
   "license": "MIT",
   "author": "Avion",
