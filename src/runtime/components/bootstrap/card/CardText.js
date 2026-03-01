@@ -1,0 +1,23 @@
+import { useBlock } from "../../../composables/base/useBlock.js";
+import { BlockProps } from "../../../composables/base/useBaseProps.js";
+import { hProps } from "../../../composables/utils/useProps.js";
+import { defineComponent, h } from "#imports";
+export default defineComponent({
+  name: "CardText",
+  props: {
+    ...BlockProps,
+    tag: {
+      type: String,
+      default: "p"
+    }
+  },
+  setup(props, context) {
+    const block = useBlock(props);
+    const current = {
+      class: {
+        "card-text": true
+      }
+    };
+    return () => h(props.tag, hProps(current, block), context.slots);
+  }
+});

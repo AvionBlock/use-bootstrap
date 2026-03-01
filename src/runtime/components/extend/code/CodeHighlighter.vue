@@ -1,0 +1,41 @@
+<template>
+  <b-div v-bind="$attrs">
+    <b-div :key="key" v-html="html" />
+  </b-div>
+</template>
+
+<script setup>
+import { isString, uniqueId } from "../../../composables/utils/helpers";
+import { useDarkState } from "../../../composables/utils/useDarkState";
+import { useSlots, ref, watch } from "#imports";
+import bDiv from "../../html-block/Div";
+import { useNuxtApp } from "#app";
+defineOptions({
+  inheritAttrs: false
+});
+const props = defineProps({
+  lang: {
+    type: String,
+    default: "shellscript"
+  }
+});
+const nuxtApp = useNuxtApp();
+const slots = useSlots();
+const isDark = useDarkState();
+const html = ref("");
+const codeToHtml = nuxtApp.$shiki;
+const key = ref("");
+watch(isDark, () => {
+  key.value = uniqueId();
+  if (slots.default) {
+    const code = slots.default()[0].children;
+    if (code && isString(code) && codeToHtml) {
+      html.value = codeToHtml(code, { lang: props.lang, theme: isDark.value ? "min-dark" : "snazzy-light" });
+    }
+  }
+}, { immediate: true });
+</script>
+
+<style scoped>
+:deep(pre){margin-bottom:0;white-space:pre-wrap}
+</style>

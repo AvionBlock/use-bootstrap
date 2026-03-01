@@ -1,0 +1,11 @@
+This project includes code derived from the project:
+
+use-bootstrap
+https://github.com/simplise/use-bootstrap.git
+
+The original project indicates that its code is licensed
+under the MIT License in its README and website, but does
+not include a LICENSE file in the repository.
+
+This project reuses and adapts portions of that work
+in good faith based on that representation.

@@ -1,0 +1,32 @@
+import type { IViewStateSourceResult, IViewStateSourceProps } from '../useViewState';
+import { useDynamicRouteParam } from '../../../composables/extend/dynamicRoute/useDynamicRouteParam';
+import { useRoute } from '#app';
+import { computed, ref } from '#imports';
+//
+export function useViewStateDynamicRoute(prop: IViewStateSourceProps): IViewStateSourceResult {
+ //
+ const route = useRoute();
+ const lang = useDynamicRouteParam('lang');
+ //
+ const model = computed({
+  // getter 関数
+  get() {
+   if (prop.key) {
+    return route.meta[`${prop.key}:${lang.value}`] || route.meta[prop.key] || '';
+   }
+   else {
+    return lang.value;
+   }
+  },
+  // setter 関数
+  set(_) {
+   throw new Error('Does not support changing RouteMeta');
+  },
+ });
+  //
+ return {
+  model,
+  updated: ref(false),
+  status: ref(200),
+ };
+}

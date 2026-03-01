@@ -1,0 +1,12 @@
+<script setup>
+import FormInput from "../html-block/form/FormInput.vue";
+const model = defineModel({ type: String, default: "" });
+</script>
+
+<template>
+ <FormInput
+  v-model="model"
+  size="sm"
+  type="text"
+ />
+</template>

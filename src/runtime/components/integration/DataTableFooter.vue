@@ -1,0 +1,70 @@
+<script setup>
+import { toNumber } from "es-toolkit/compat";
+import Pagination from "../bootstrap/pagination/Pagination";
+import PageItem from "../bootstrap/pagination/PageItem";
+import PageLink from "../bootstrap/pagination/PageLink";
+import bDiv from "../html-block/Div";
+import ViewState from "./ViewState.vue";
+defineProps({
+  total: {
+    type: Number
+  },
+  data: {
+    type: Array
+  }
+});
+</script>
+
+<template>
+ <ViewState
+  v-slot="query"
+  src="query://"
+  :data="{
+  page: 1
+}"
+ >
+  <b-div flex>
+   <b-div flex-grow="grow-1">
+    <nav aria-label="Page navigation">
+     <Pagination>
+      <PageItem>
+       <PageLink
+        aria-label="Previous"
+        @click="query.set('page', 1)"
+       >
+        <span aria-hidden="true">&laquo;</span>
+       </PageLink>
+      </PageItem>
+      <PageItem>
+       <PageLink
+        aria-label="Previous"
+        @click="query.set('page', toNumber(query.data.page || 1) - 1)"
+       >
+        <span aria-hidden="true">&laquo;</span>
+       </PageLink>
+      </PageItem>
+      <PageItem>
+       <PageLink
+        aria-label="Next"
+        @click="query.set('page', toNumber(query.data.page || 1) + 1)"
+       >
+        <span aria-hidden="true">&raquo;</span>
+       </PageLink>
+      </PageItem>
+      <PageItem>
+       <PageLink
+        aria-label="Next"
+        @click="query.set('page', toNumber(query.data.page || 1) + 1)"
+       >
+        <span aria-hidden="true">&raquo;</span>
+       </PageLink>
+      </PageItem>
+     </Pagination>
+    </nav>
+   </b-div>
+   <b-div :paddin="2">
+    {{ total }}
+   </b-div>
+  </b-div>
+ </ViewState>
+</template>
