@@ -18,14 +18,14 @@ https://usebootstrap.org/
 Install the module via Nuxt CLI:
 
 ```bash
-npx nuxi@latest module add usebootstrap
+npx nuxi@latest module add @avion-block/usebootstrap
 ```
 
 Then enable the module in your `nuxt.config`:
 
 ```ts
 export default defineNuxtConfig({
-  modules: ["usebootstrap"],
+  modules: ["@avion-block/usebootstrap"],
 });
 ```
 
